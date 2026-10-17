@@ -12,4 +12,8 @@
 /* the port's environment variables: GAME_ENV("CD_IMAGE") is $CYB_CD_IMAGE */
 #define GAME_ENV(name) "CYB_" name
 
+/* no C main of the game is known: start at the program's entry point
+ * (SR exports it as start_) */
+#define GAME_ENTRY c_start_
+
 #endif /* _GAME_HOOKS_H_INCLUDED_ */
