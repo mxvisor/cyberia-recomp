@@ -1,0 +1,3 @@
+[submodule "SR-SDK"]
+	path = SR-SDK
+	url = https://github.com/mxvisor/SR-SDK.git
