@@ -45,6 +45,7 @@
 
 /* The game's own BIOS handlers (INT 33h mouse), reached from the runtime's
  * interrupt dispatch. */
+#include "Game_mouse.h"
 #define GAME_DOS_INTERRUPT(number, regs) Game_DosInterrupt(number, regs)
 
 #endif /* _GAME_HOOKS_H_INCLUDED_ */

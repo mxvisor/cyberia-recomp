@@ -38,7 +38,6 @@
 #include <SDL.h>
 
 #include "Game_defs.h"
-#include "Game_dosregs.h"
 #include "Game_hooks.h"
 #include "Game_vars.h"
 #include "Game_dosmem.h"
@@ -393,7 +392,8 @@ void Game_SbDeliverIrq(void)
 
         const uint8_t vector = (uint8_t)(0x08 + sb_irq);
         if (Game_DosGetVector(vector) != 0) {
-            Game_CallGuestInterrupt(vector);
+            int ran = Game_CallGuestInterrupt(vector);
+            if (trace_sb()) fprintf(stderr, "SB irq %02x: handler %08x, ran=%d\n", vector, Game_DosGetVector(vector), ran);
         } else {
             /* No valid handler installed: advance rate limiter so the next
              * block boundary can fire without starving the main loop. */
@@ -407,41 +407,4 @@ void Game_SbShutdown(void)
     if (audio_device != 0) SDL_CloseAudioDevice(audio_device);
     audio_device = 0;
     playing = 0;
-}
-
-int Game_DosInterrupt(uint8_t number, Game_DosRegs *regs)
-{
-    if (number != 0x33) {
-        return 0;
-    }
-
-    /* Mouse BIOS INT 33h: the game uses it for mouse. */
-    switch (Game_DosAH(regs)) {
-        case 0x00: /* Reset mouse and get status */
-            Game_DosSetAX(regs, 0xffff); /* installed */
-            Game_DosSetBX(regs, 0x0003); /* 3 buttons */
-            Game_DosSetCarry(regs, 0);
-            return 1;
-        case 0x01: /* Show cursor */
-        case 0x02: /* Hide cursor */
-            Game_DosSetCarry(regs, 0);
-            return 1;
-        case 0x03: /* Get position and button status */
-            Game_DosSetBX(regs, 0); /* buttons */
-            Game_DosSetCX(regs, 160); /* x */
-            Game_DosSetDX(regs, 100); /* y */
-            Game_DosSetCarry(regs, 0);
-            return 1;
-        case 0x04: /* Set mouse position */
-        case 0x07: /* Set X min/max */
-        case 0x08: /* Set Y min/max */
-        case 0x0b: /* Read motion counters */
-        case 0x1c: /* Set mickeys per pixel */
-            Game_DosSetCarry(regs, 0);
-            return 1;
-        default:
-            Game_DosSetAL(regs, 0xff);
-            Game_DosSetCarry(regs, 0);
-            return 1;
-    }
 }
