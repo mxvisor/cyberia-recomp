@@ -16,6 +16,12 @@
 /* the port's environment variables: GAME_ENV("CD_IMAGE") is $CYB_CD_IMAGE */
 #define GAME_ENV(name) "CYB_" name
 
+/* A directory in the game's data that tells a copy of the disc from an
+ * installed game: the data directory is then the disc's root, the drive D:
+ * (Game_cdrom.c).  The disc itself has no directories, so the marker is
+ * empty and only a portable copy of the disc has it. */
+#define GAME_CD_MARKER "_CD_"
+
 /* The game runs from the disc: a path without a drive is looked up on the CD
  * first, then in the game directory (Game_gamedir.c). */
 #define GAME_CD_CURRENT_DRIVE
