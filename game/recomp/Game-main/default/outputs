@@ -1,0 +1,7 @@
+# Everything SR writes in its working directory beside <module>.asm, one name
+# per line: the segments of this EXE, each with its data and, where the
+# segment holds code, its code. Stage 2 produces these, stage 3 moves them to
+# build/gen/; they are game data, so they are listed here and not guessed at.
+seg01_code.llinc
+seg01_data.llinc
+seg02_data.llinc
