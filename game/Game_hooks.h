@@ -16,18 +16,17 @@
 /* the port's environment variables: GAME_ENV("CD_IMAGE") is $CYB_CD_IMAGE */
 #define GAME_ENV(name) "CYB_" name
 
-/* A directory in the game's data that tells a copy of the disc from an
- * installed game: the data directory is then the disc's root, the drive D:
- * (Game_cdrom.c).  The disc itself has no directories, so the marker is
- * empty and only a portable copy of the disc has it. */
-#define GAME_CD_MARKER "_CD_"
+/* A file the game reads from the disc (D:GLOBALS.DEF; the install leaves it
+ * there): the game directory holding it is then also the disc's root, the
+ * drive D: (Game_cdrom.c), as in a portable copy. */
+#define GAME_CD_MARKER "GLOBALS.DEF"
 
 /* The game runs from the disc: a path without a drive is looked up on the CD
  * first, then in the game directory (Game_gamedir.c). */
 #define GAME_CD_CURRENT_DRIVE
 
-/* The files the game directory must hold (Game_gamedir.c): the data of the
- * game is on the disc, and the port runs from a copy of it. */
+/* The files the game directory must hold (Game_gamedir.c): JOY.DEF of the
+ * install, or GLOBALS.DEF of the disc (the game's data stays on the disc). */
 #define GAME_DATA_MARKERS "JOY.DEF", "GLOBALS.DEF"
 
 /* The game's own sound driver drives a Sound Blaster (BLASTER=A220 I5 D1 T1):

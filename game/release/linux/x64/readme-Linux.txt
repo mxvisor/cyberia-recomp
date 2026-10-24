@@ -9,8 +9,9 @@ The game needs its own data: the files of the disc (CYB.EXE, the .G93/.Z94
 scenes and sounds, the .DEF and .C93 files) and an image of the disc for the
 CD drive.  The port reads the data from the game's directory and the CD from
 the image named by the CYB_CD_IMAGE environment variable (a .cue file); a
-copy of the disc's files in the game's directory works without the image,
-when the directory holds the _CD_ marker.
+copy of the disc's files in the game's directory works without the image:
+the directory of this archive is the game's install with the rest of the
+disc's files, so it is also the disc.
 
 The port writes to the directory named by CYB_WRITE_ROOT (the game's
 directory by default) and reads the settings from the environment:
