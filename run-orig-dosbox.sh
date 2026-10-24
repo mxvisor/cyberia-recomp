@@ -6,8 +6,6 @@ GAME_REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$GAME_REPO/SR-SDK/tools/run_orig_common.sh"
 
 ENVP=CYB
-DATA_DEFAULT="$GAME_REPO/build/disc"     # make disc: the image with game/portable.cfg over it
-CD_DEFAULT="$GAME_REPO/../iso/CD/CYBERIA_RUS.cue"
 DOS_CMD=CYB.EXE
 
 run_orig_dosbox "$@"

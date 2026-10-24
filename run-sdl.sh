@@ -7,8 +7,6 @@ source "$GAME_REPO/SR-SDK/tools/run_common.sh"
 
 PROG=cyberia
 ENVP=CYB
-DATA_DEFAULT="$GAME_REPO/build/disc"     # make disc: the image with game/portable.cfg over it
-DATA_MARKER=CYB.EXE                    # a file the data directory must hold
-CD_DEFAULT="$GAME_REPO/../iso/CD/CYBERIA_RUS.cue"
+DATA_MARKER=CYB.EXE                    # a file the game directory must hold
 
 run_native "$@"
