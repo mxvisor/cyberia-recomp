@@ -33,6 +33,5 @@
  * the runtime's card of Game_dossb.c, with its IRQ. */
 #define GAME_DOS_SOUNDBLASTER
 
-#define GAME_LOG_FILE "cyberia.log"
 
 #endif /* _GAME_HOOKS_H_INCLUDED_ */
