@@ -21,8 +21,11 @@ CYB_TRACE_MOUSE, CYB_TRACE_SOUND, CYB_TRACE_TIMER.
 Libraries
 ---------
 
-The game requires following 64-bit libraries: SDL2, SDL2_mixer
-On debian based distributions these libraries are in following packages: libsdl2-2.0-0 libsdl2-mixer-2.0-0
+The game needs the 64-bit library SDL2 (on debian based distributions the
+package libsdl2-2.0-0). SDL2_mixer is in the archive, beside the program
+(libSDL2_mixer-2.0.so.0); the program takes it before the system's.
+
+The binary needs glibc @GLIBC_MAX@ or newer.
 
 Status
 ------
