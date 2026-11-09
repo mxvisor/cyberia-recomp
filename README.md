@@ -62,7 +62,7 @@ in `game/recomp/`.
 ```sh
 git clone --recursive <this repository>
 cd cyberia-recomp
-make linux      # build/bin/pc64-linux/cyberia
+make linux      # build/bin/x64-linux/cyberia-x64
 make windows    # MinGW-w64 cross build, with the SDL DLLs
 make apk        # Android, arm64
 make distrib    # the release archives, in build/distrib/
