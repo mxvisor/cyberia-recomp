@@ -7,7 +7,7 @@ DOS/4GW and the PC hardware gave it comes from the port's runtime,
 [SR-SDK](SR-SDK/README.md), on SDL2.
 
 This port is almost all SR-SDK: the game brings only its description (`game/game.cfg`,
-`game/Game_hooks.h`, `game/portable.cfg`) and SR's inputs, with no code of its own.
+`game/Game_hooks.h`, `game/distrib.cfg`) and SR's inputs, with no code of its own.
 
 No game data is included. The build and the game need your own copy of the game's CD.
 
@@ -55,7 +55,7 @@ MinGW-w64 for Windows; the Android SDK and NDK for Android (see
 [SR-SDK's README](SR-SDK/README.md#requirements)).
 
 The recompiler reads `CYB.EXE` from the CD, so the image is needed for the build as well.
-Put it where `image=` of [`game/portable.cfg`](game/portable.cfg) points, beside the
+Put it where `image=` of [`game/distrib.cfg`](game/distrib.cfg) points, beside the
 repository: `../iso/CYBERIA_RUS.iso`. The build checks the executable against the SHA-256
 in `game/recomp/`.
 

@@ -18,7 +18,7 @@
 
 /* A file the game reads from the disc (D:GLOBALS.DEF; the install leaves it
  * there): the game directory holding it is then also the disc's root, the
- * drive D: (Game_cdrom.c), as in a portable copy. */
+ * drive D: (Game_cdrom.c), as in a distrib copy. */
 #define GAME_CD_MARKER "GLOBALS.DEF"
 
 /* The game runs from the disc: a path without a drive is looked up on the CD
