@@ -6,8 +6,9 @@ of the game becomes native code, and the game runs its own logic as it did in DO
 DOS/4GW and the PC hardware gave it comes from the port's runtime,
 [SR-SDK](SR-SDK/README.md), on SDL2.
 
-This port is almost all SR-SDK: the game brings only its description (`game/game.cfg`,
-`game/Game_hooks.h`, `game/distrib.cfg`) and SR's inputs, with no code of its own.
+This port is almost all SR-SDK: the game brings its description (`game/game.cfg`,
+`game/Game_hooks.h`, `game/distrib.cfg`), SR's inputs, and one small mod
+(`game/CYB-mods.c`).
 
 No game data is included. The build and the game need your own copy of the game's CD.
 
@@ -47,6 +48,15 @@ No game data is included. The build and the game need your own copy of the game'
 - The port's panel (F12): the size of the picture, the window or the full screen, the
   frame rate, the gamepad.
 - Gamepads, through SDL's game controller support.
+
+## Mods
+
+Off by default, so the game plays as the original did. Each mod is a key of
+`cyberia.cfg` and an item of the port's panel.
+
+| Key | What it does |
+|---|---|
+| `Uninvert_Crosshair=on` | The crosshair follows the mouse (or a touch) up and down, not mirrored. The original starts with the vertical axis of the crosshair inverted, and its F key toggles that. |
 
 ## Building
 

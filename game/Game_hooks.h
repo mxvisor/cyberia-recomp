@@ -33,5 +33,11 @@
  * the runtime's card of Game_dossb.c, with its IRQ. */
 #define GAME_DOS_SOUNDBLASTER
 
+/* the port's mods (CYB-mods.c): keys of the settings file, items of the panel */
+int CYB_ConfigKey(const char *key, const char *value);
+#define GAME_CONFIG_KEY(key, value) CYB_ConfigKey(key, value)
+void CYB_OsdItems(void);
+#define GAME_OSD_ITEMS() CYB_OsdItems()
+
 
 #endif /* _GAME_HOOKS_H_INCLUDED_ */

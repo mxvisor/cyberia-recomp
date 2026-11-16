@@ -1,0 +1,1 @@
+loc_40278,cyb_crosshair_inverted
