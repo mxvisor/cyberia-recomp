@@ -4,7 +4,11 @@
  * (infrared, magnetic resonance, biomass) and F10 stops one; Esc is the main
  * menu, L the load menu, P the pause.  The buttons sit in the black bars
  * beside the 4:3 picture, as small as the bars ask; a touch elsewhere is the
- * mouse. */
+ * mouse.  With the mod Gyro_Mouse FIRE is the mouse's left button: the game
+ * reads the mouse only while no arrow and no Space is held (loc_1D088), so
+ * Space would stop the aim of the gyroscope. */
+
+#include "Game_gyro.h"
 
 #define GP_NBUTTONS 13
 
@@ -47,6 +51,7 @@ static void gp_layout(int W, int H)
     m = S / 4;
     small = S * 2 / 3;
     pw = 3 * S + 2 * gap;
+    gp_buttons[4].key = Game_GyroMod() ? TOUCHGAMEPAD_MOUSE_LEFT : SDLK_SPACE;
 
     /* the D-pad at the bottom left */
     x = m;

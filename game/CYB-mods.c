@@ -1,5 +1,7 @@
 /* The port's mods (off by default), each a key of cyberia.cfg and an item of
- * the port's panel. */
+ * the port's panel.  Gyro_Mouse and its speed are the SDK's (core/Game_gyro.h):
+ * on a phone, turning it aims the crosshair; a touch still puts it under the
+ * finger and fires. */
 
 #include <stdint.h>
 #include <stdio.h>
@@ -7,6 +9,7 @@
 
 #include "Game_hooks.h"
 #include "Game_osd.h"
+#include "Game_gyro.h"
 
 /* [40278] (global_aliases.sci): 1 turns the crosshair upside down, Y = 199 - Y
  * of the mouse, the arrows and the joystick (loc_1D088); the game starts with
@@ -47,4 +50,5 @@ static const Game_OsdItem uninvert_item = { "Uninverted crosshair", NULL, uninve
 void CYB_OsdItems(void)
 {
     Game_OsdAddItem(&uninvert_item);
+    Game_GyroAddItems();
 }

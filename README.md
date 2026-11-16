@@ -57,6 +57,8 @@ Off by default, so the game plays as the original did. Each mod is a key of
 | Key | What it does |
 |---|---|
 | `Uninvert_Crosshair=on` | The crosshair follows the mouse (or a touch) up and down, not mirrored. The original starts with the vertical axis of the crosshair inverted, and its F key toggles that. |
+| `Gyro_Mouse=on` | On a phone or a tablet with a gyroscope: turning the device moves the mouse, so it aims the crosshair. A touch still puts the mouse under the finger and clicks, and the turns go on from there. The on-screen FIRE is then the mouse's button, not Space: the game stops reading the mouse while Space or an arrow is held. |
+| `Gyro_Mouse_Speed=1..9` | How far a turn moves the mouse: 5 (the default) crosses the screen in a turn of about 38 degrees, each step 0.3 of a screen's width a radian. |
 
 ## Building
 
