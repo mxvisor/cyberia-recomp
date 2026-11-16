@@ -20,7 +20,7 @@ No game data is included. The build and the game need your own copy of the game'
 | Developer | Xatrix Entertainment |
 | Publisher | Interplay Productions |
 | Year | 1994 |
-| Platform | MS-DOS, CD-ROM; the port is made from the Russian release's disc |
+| Platform | MS-DOS, CD-ROM; the port builds from the Russian or the English release's disc |
 | Executable | `CYB.EXE`, a 32-bit LE program: Watcom C/C++32, the DOS/4GW extender |
 | Graphics | VGA mode 13h, 320×200 in 256 colours; scenes and movies streamed from the CD |
 | Sound | the game's own Sound Blaster driver (DMA, with its interrupt) |
@@ -66,8 +66,21 @@ MinGW-w64 for Windows; the Android SDK and NDK for Android (see
 
 The recompiler reads `CYB.EXE` from the CD, so the image is needed for the build as well.
 Put it where `image=` of [`game/distrib.cfg`](game/distrib.cfg) points, beside the
-repository: `../iso/CYBERIA_RUS.iso`. The build checks the executable against the SHA-256
+repository: `../iso/CYBERIA_RUS.iso`. The build checks the executable against the SHA-256s
 in `game/recomp/`.
+
+Two releases of the game build, each from its own disc: the Russian one (the default) and
+the English one. Both have `CYB.EXE` V1.86, the same program but for the texts, so they
+share SR's inputs. The English build is `make <target> image=<the English disc image>`
+(say `make linux image=../iso/Cyberia.bin`, a `.bin` with its `.cue` beside it); the build
+keeps that choice until `image=default`.
+
+The port has the two fixes of the publisher's V1.87 update (December 1994) built in, for
+both releases (`game/recomp/Game-main/default/llasm/instruction_replacements.sci`):
+
+- the password that is typed in the game no longer cuts the player's name, so the log of
+  the saved games (`<name>.log`) stays the same file;
+- after the first arcade sequence the scene is reset as after the others.
 
 ```sh
 git clone --recursive <this repository>
