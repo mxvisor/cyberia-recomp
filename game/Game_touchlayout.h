@@ -6,11 +6,13 @@
  * beside the 4:3 picture, as small as the bars ask; a touch elsewhere is the
  * mouse.  With the mod Gyro_Mouse FIRE is the mouse's left button: the game
  * reads the mouse only while no arrow and no Space is held (loc_1D088), so
- * Space would stop the aim of the gyroscope. */
+ * Space would stop the aim of the gyroscope.  TURRET beside it is Space all the
+ * time: the turret (loc_1162E) reads the keyboard or the joystick, never the
+ * mouse. */
 
 #include "Game_gyro.h"
 
-#define GP_NBUTTONS 13
+#define GP_NBUTTONS 14
 
 static GPButton gp_buttons[GP_NBUTTONS] = {
     {0,0,0,0, SDLK_UP,     1, NULL,    GP_LIGHT,  -1},
@@ -18,12 +20,13 @@ static GPButton gp_buttons[GP_NBUTTONS] = {
     {0,0,0,0, SDLK_LEFT,   3, NULL,    GP_LIGHT,  -1},
     {0,0,0,0, SDLK_RIGHT,  4, NULL,    GP_LIGHT,  -1},
     {0,0,0,0, SDLK_SPACE,  0, "FIRE",  GP_RED,    -1},
-    {0,0,0,0, SDLK_RETURN, 0, "ENTER", GP_BLUE,   -1},
+    {0,0,0,0, SDLK_SPACE,  0, "TURRET", GP_RED,   -1},
     {0,0,0,0, SDLK_F1,     0, "IR",    GP_ORANGE, -1},
     {0,0,0,0, SDLK_F2,     0, "MRI",   GP_ORANGE, -1},
     {0,0,0,0, SDLK_F3,     0, "BIO",   GP_ORANGE, -1},
     {0,0,0,0, SDLK_F10,    0, "STOP",  GP_GREY,   -1},
     {0,0,0,0, SDLK_ESCAPE, 0, "ESC",   GP_RED,    -1},
+    {0,0,0,0, SDLK_RETURN, 0, "ENTER", GP_BLUE,   -1},
     {0,0,0,0, SDLK_l,      0, "LOAD",  GP_GREY,   -1},
     {0,0,0,0, SDLK_p,      0, "PAUSE", GP_GREY,   -1},
 };
@@ -61,8 +64,8 @@ static void gp_layout(int W, int H)
     gp_place(2, x, y + S + gap, S, S);
     gp_place(3, x + 2 * (S + gap), y + S + gap, S, S);
 
-    /* fire and enter at the bottom right, the scans above them and the stop of a
-     * scan above those: the block is as wide as the D-pad */
+    /* fire and the turret's fire at the bottom right, the scans above them and
+     * the stop of a scan above those: the block is as wide as the D-pad */
     x = W - m - pw;
     aw = (pw - gap) / 2;
     ah = S * 3 / 2;
@@ -77,8 +80,11 @@ static void gp_layout(int W, int H)
     y -= gap + small;
     gp_place(9, x, y, S, small);
 
-    /* the menus in the top corners, away from the thumbs */
-    gp_place(10, m, m, S, small);
-    gp_place(11, m + S + gap, m, S, small);
-    gp_place(12, W - m - S, m, S, small);
+    /* the menus in the top corners, away from the thumbs: Esc, Enter and the
+     * load menu on the left, the pause on the right */
+    for (i = 0; i < 3; i++)
+    {
+        gp_place(10 + i, m + i * (S + gap), m, S, small);
+    }
+    gp_place(13, W - m - S, m, S, small);
 }
