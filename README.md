@@ -44,7 +44,8 @@ No game data is included. The build and the game need your own copy of the game'
 
 - The game plays: the intro, the scenes, the sound, the mouse.
 - Linux (x86-64, arm64), Windows (x86-64; it also runs under Wine) and Android (arm64),
-  where on-screen buttons stand in for the keyboard.
+  where on-screen buttons stand in for the keyboard; KBD opens a full keyboard over the
+  picture, for the player's name.
 - The port's panel (F12): the size of the picture, the window or the full screen, the
   frame rate, the gamepad.
 - Gamepads, through SDL's game controller support.

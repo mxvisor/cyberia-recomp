@@ -12,7 +12,7 @@
 
 #include "Game_gyro.h"
 
-#define GP_NBUTTONS 14
+#define GP_NBUTTONS 15
 
 static GPButton gp_buttons[GP_NBUTTONS] = {
     {0,0,0,0, SDLK_UP,     1, NULL,    GP_LIGHT,  -1},
@@ -28,6 +28,7 @@ static GPButton gp_buttons[GP_NBUTTONS] = {
     {0,0,0,0, SDLK_ESCAPE, 0, "ESC",   GP_RED,    -1},
     {0,0,0,0, SDLK_RETURN, 0, "ENTER", GP_BLUE,   -1},
     {0,0,0,0, SDLK_l,      0, "LOAD",  GP_GREY,   -1},
+    {0,0,0,0, TOUCHGAMEPAD_KEYBOARD, 0, "KBD", GP_GREY, -1},
     {0,0,0,0, SDLK_p,      0, "PAUSE", GP_GREY,   -1},
 };
 
@@ -81,10 +82,12 @@ static void gp_layout(int W, int H)
     gp_place(9, x, y, S, small);
 
     /* the menus in the top corners, away from the thumbs: Esc, Enter and the
-     * load menu on the left, the pause on the right */
+     * load menu on the left, the keyboard (the player's name) and the pause
+     * on the right */
     for (i = 0; i < 3; i++)
     {
         gp_place(10 + i, m + i * (S + gap), m, S, small);
     }
-    gp_place(13, W - m - S, m, S, small);
+    gp_place(13, W - m - 2 * S - gap, m, S, small);
+    gp_place(14, W - m - S, m, S, small);
 }
