@@ -48,7 +48,13 @@ No game data is included. The build and the game need your own copy of the game'
   picture, for the player's name.
 - The port's panel (F12): the size of the picture, the window or the full screen, the
   frame rate, the gamepad.
-- Gamepads, through SDL's game controller support.
+- Gamepads, through SDL's game controller support; as the game's joystick (the menu's
+  Joystick item calibrates it) when one is plugged in before the game starts. The port's
+  `JOY.DEF` is the calibration for its game port: the disc's is for a machine of 1994.
+
+![The port's panel (F12) over a scene of the game, the window at 1024x768](docs/panel.jpg)
+
+![On an Android phone: a flight with the on-screen buttons, and the full keyboard of KBD over the name screen](docs/android.gif)
 
 ## Mods
 
