@@ -39,5 +39,10 @@ int CYB_ConfigKey(const char *key, const char *value);
 void CYB_OsdItems(void);
 #define GAME_OSD_ITEMS() CYB_OsdItems()
 
+/* The keys reach the game as they come, with no hold (Game_doskbd.c), as in
+ * DOSBox: the scenes read them in the game's loop often enough, and the
+ * quickest taps of the on-screen gamepad got through.  If a quick tap is lost,
+ * 60 (the runtime's default) keeps every key down that long. */
+#define GAME_DOS_KBD_MIN_HOLD_MS 0u
 
 #endif /* _GAME_HOOKS_H_INCLUDED_ */
