@@ -50,5 +50,8 @@ static const Game_OsdItem uninvert_item = { "Uninverted crosshair", NULL, uninve
 void CYB_OsdItems(void)
 {
     Game_OsdAddItem(&uninvert_item);
+#ifdef __ANDROID__
+    /* the gyroscope's items are in the panel on Android only */
     Game_GyroAddItems();
+#endif
 }
